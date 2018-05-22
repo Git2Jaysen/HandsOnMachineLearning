@@ -28,8 +28,8 @@
 			b. 最终的结果与Stochastic Gradient Descent一样，是接近最优解的一个解。
 
 总结
-Algorithm			Large m		Whole Set 	Large n		Hyperparams		Scaling required	Scikit-Learn
-Normal Equation		Fast		Yes			Slow		0				No					LinearRegressor
-Batch GD			Slow		Yes			Fast		2				Yes					No
-Stochastic GD		Fast		No			Fast		>=2				Yes					SGDRegressor
-Mini-batch GD		Fast		No			Fast		>=2				Yes					No
+Algorithm		Large m		Whole Set 		Large n		Hyperparams		Scaling required	Scikit-Learn
+Normal Equation		Fast		Yes			Slow		0			No			LinearRegressor
+Batch GD		Slow		Yes			Fast		2			Yes			No
+Stochastic GD		Fast		No			Fast		>=2			Yes			SGDRegressor
+Mini-batch GD		Fast		No			Fast		>=2			Yes			No		No
