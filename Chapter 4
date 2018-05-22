@@ -32,4 +32,4 @@ Algorithm		Large m		Whole Set 		Large n		Hyperparams		Scaling required	Scikit-Le
 Normal Equation		Fast		Yes			Slow		0			No			LinearRegressor
 Batch GD		Slow		Yes			Fast		2			Yes			No
 Stochastic GD		Fast		No			Fast		>=2			Yes			SGDRegressor
-Mini-batch GD		Fast		No			Fast		>=2			Yes			No		No
+Mini-batch GD		Fast		No			Fast		>=2			Yes			No
