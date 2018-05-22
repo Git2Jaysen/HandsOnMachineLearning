@@ -1,3 +1,4 @@
+
 1. 线性回归(以RMSE或MSE为损失函数)，求解最优参数的4种方法：
 	A. Normal Equation
 		a. 优点：简单直接，可以找到最优参数. 对特征数量较少，内存可以直接装下的数据适应性良好。
@@ -61,11 +62,19 @@ Mini-batch GD		Fast		No			Fast		>=2			Yes			No
 		A) 训练过程中，验证集误差首先会快速减小，然后缓慢增加，Early Stopping的做法是在验证集误差达到最小时停止训练。
 		B) 当使用SGD和MGD时，验证集误差曲线并不光滑，存在小波动，这是不好确定最小值。一个做法是，当达到当前最小值时，记录该点的参数，然后
 		   设置一个tolerance period(再继续迭代多少次)，如果在这个period中，没有另外更小的值，则停止训练，并回退到最小值点。
+		C) 简单易行，通用。
 	F. 在使用Ridge, Lasso, Elastic Net进行正则化之前，记得范围化数据，使数据具有相似的范围(StandardScaler, MinMaxScaler)。
 	G. 什么时候选用Linear Regression, Ridge, Lasso 或 Elastic Net?
 		A) 通常应该避免使用不加正则化的Linear Regression。
 		B) Ridge正则化是默认的选择。
 		C) 如果认为仅仅只有一部分特征是有用的，可以选择Lasso和Elastic Net正则化，因为它们能够进行特征选择。但是，Elastic Net比Lasso更
 		   好，因为当特征数量远大于训练样本数或者一些特征有很强的相关性时，Lasso正则化表现的不是很稳定。
+		   
+4. 逻辑斯蒂回归(Logistic Regression)
+	A. 损失函数使用的是对数损失，没有Normal Equation，但因为时凸函数，所以可以使用Gradient Descent。
+	B. 逻辑斯蒂回归同样可以使用Ridge, Lasso, Elastic Net正则化。
+	C. Softmax Regression(multi-class regression, multi-nomial regression)：能够解决多类别分类问题，但不需要像OVA和OVO策略一样训练多
+	   个二分类器。
+		A) 使用交叉熵作为损失函数。
 
 
