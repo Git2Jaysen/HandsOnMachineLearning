@@ -50,5 +50,12 @@ Mini-batch GD		Fast		No			Fast		>=2			Yes			No
 			   训练集和验证集的差距。
 			d. 恰好合适：合适的偏差和方差，即最终训练集和验证集的性能相差较小，但与预期的性能值相差较小。
 			e. bias-variance tradeoff：减小偏差(bias)会增加方差(variance)，增加偏差(bias)会减小方差(variance)。
+	D. 简单地减少过拟合的方法是减小最高项次数。
+			
+3. 正则化Regularization
+	A. 减少模型过拟合，综合考虑损失函数值和模型复杂度，在保证损失函数值尽可能小的同时，减小模型复杂度。
+	B. L2正则化：Ridge Regularization。
+	C. L1正则化：Lasso Regularization。
+	D. L1正则化和L2正则化的混合：Elastic Net。
 
 
