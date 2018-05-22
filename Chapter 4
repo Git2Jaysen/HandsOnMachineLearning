@@ -54,8 +54,18 @@ Mini-batch GD		Fast		No			Fast		>=2			Yes			No
 			
 3. 正则化Regularization
 	A. 减少模型过拟合，综合考虑损失函数值和模型复杂度，在保证损失函数值尽可能小的同时，减小模型复杂度。
-	B. L2正则化：Ridge Regularization。
-	C. L1正则化：Lasso Regularization。
+	B. L2正则化：Ridge Regularization，可以使用Normal Equation和Gradient Descent求解。
+	C. L1正则化：Lasso Regularization，会自动进行特征选择，忽略不重要的特征。
 	D. L1正则化和L2正则化的混合：Elastic Net。
+	E. Early Stopping。
+		A) 训练过程中，验证集误差首先会快速减小，然后缓慢增加，Early Stopping的做法是在验证集误差达到最小时停止训练。
+		B) 当使用SGD和MGD时，验证集误差曲线并不光滑，存在小波动，这是不好确定最小值。一个做法是，当达到当前最小值时，记录该点的参数，然后
+		   设置一个tolerance period(再继续迭代多少次)，如果在这个period中，没有另外更小的值，则停止训练，并回退到最小值点。
+	F. 在使用Ridge, Lasso, Elastic Net进行正则化之前，记得范围化数据，使数据具有相似的范围(StandardScaler, MinMaxScaler)。
+	G. 什么时候选用Linear Regression, Ridge, Lasso 或 Elastic Net?
+		A) 通常应该避免使用不加正则化的Linear Regression。
+		B) Ridge正则化是默认的选择。
+		C) 如果认为仅仅只有一部分特征是有用的，可以选择Lasso和Elastic Net正则化，因为它们能够进行特征选择。但是，Elastic Net比Lasso更
+		   好，因为当特征数量远大于训练样本数或者一些特征有很强的相关性时，Lasso正则化表现的不是很稳定。
 
 
