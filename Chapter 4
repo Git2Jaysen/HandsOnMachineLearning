@@ -1,4 +1,4 @@
-1. 线型回归(以RMSE或MSE为损失函数)，求解最优参数的4种方法：
+1. 线性回归(以RMSE或MSE为损失函数)，求解最优参数的4种方法：
 	A. Normal Equation
 		a. 优点：简单直接，可以找到最优参数. 对特征数量较少，内存可以直接装下的数据适应性良好。
 		b. 缺点：不适应特征数量庞大以及内存装不下的数据集。
@@ -33,3 +33,10 @@ Normal Equation		Fast		Yes			Slow		0			No			LinearRegressor
 Batch GD		Slow		Yes			Fast		2			Yes			No
 Stochastic GD		Fast		No			Fast		>=2			Yes			SGDRegressor
 Mini-batch GD		Fast		No			Fast		>=2			Yes			No
+
+2. 多项式回归
+	A. 线型回归无法处理非线性数据，这时候可以对数据进行多项式拟合。
+	B. 多项式回归的想法很简单，即将数据处理成多项式特征，然后做线型回归，最终的结果与多项式回归等价。Scikit-Learn中的PolynomialFeatures使用
+	   的正是这种想法。不仅如此，多项式回归还能寻找特征之间的关系，这是线性回归做不到的，因为在生成多项式特征时，会产生形如a×b、a**2 * b这样的
+	   形式。
+
