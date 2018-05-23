@@ -1,0 +1,23 @@
+
+1. 支持向量机(Support Vector Machine, SVM)
+	A. SVM是一种非常有效且通用的机器学习模型，能够解决线性或非线性分类、回归和离群值检测。
+	B. 非常适合解决数据集复杂但规模较小或适中的分类问题。
+	C. SVM对特征的范围敏感，所以在使用SVM之前先要对数据进行范围化(StandardScaler等)
+	D. 线性SVM分类(Linear SVM Classification)
+		A) 线性可分(linear separable)：线性SVM基于线性可分的假设，即能用直线将样本分开。
+		B) 最大间隔(large margin)：线性SVM在求出决策边界的同时，也会产生一个间隔，使得决策边界离训练集实例尽可能的远。
+		C) 支持向量(support vector)：在最大间隔之外添加样本不会对决策边界造成影响，而是由最大间隔边缘上的样本决定，这些样本称为支持向量。
+		D) 硬间隔分类(hard margin classification)：要求数据线性可分，且所有类别相同的样本在最大间隔之外的同一侧。
+		E) 软间隔分类(soft margin classification)：比硬间隔分类更加灵活，即在间隔最大化和边界侵害之间做出权衡。在Scikit-Learn中，这种
+		   权衡是通过参数C决定的。C越大表示更少的边界侵害，但是间隔也会更小;C越小表示更多的边界侵害，那么间隔也会更大;同时，C也是防止SVM过
+		   拟合的参数之一。
+		F) 边界侵害(margin violation)：样本出现在间隔中，甚至跨过了间隔到了另一侧。
+		G) 在Scikit-Learn中，使用线性SVM进行分类有三种形式：LinearSVC(loss='hinge')、SVC(kernel='linear')、SGDClassifier(loss=
+		   'hinge', alpha=1/(m*C))
+			a. SVC(kernel='linear')非常的慢，特别是在大数据集上，所以并不推荐。
+			b. SGDClassifier(loss='hinge', alpha=1/(m*C))使用SGD来训练线性SVM，与LinearSVC(loss='hinge')相比，虽然收敛慢，
+			   但是更能适应大数据集。
+			c. LinearSVC(loss='hinge')会对偏量(b或者theta0)进行正则化，所以在运用之前先要去中心化。如果使用StanardScaler，这一
+			   步骤会自动完成。保证损失函数为hinge;同时，如果特征数比训练集要小的话，应该设置dual参数为False。
+	E. 非线性SVM分类(Nonlinear SVM Classification)
+		A) 
