@@ -32,3 +32,17 @@
 			   征非常多时。
 			b. 如果训练数据集不是太大，可以尝试使用SVC(kernel='rbf', ...)，它能适应大多数情况。
 			c. 如果有时间和计算资源，可以使用交叉验证和网格搜索来试验其他的核，尤其是当训练数据对核有特殊需求时。
+			
+总结
+class		Time complexity			Out-of-core support		Scaling required		Kernel trick
+LinearSVC	O(m * n)			No				Yes				No
+SGDClassifier	O(m * n)			Yes				Yes				No
+SVC		O(m**2 * n) to O(m**3 *n)	No				Yes				Yes
+
+	F. SVM回归(SVM Regression)
+		A) 不同于SVM分类寻找最大间隔将训练集尽可能分开在最大间隔之外，SVM回归尽可能的使训练集在最大间隔以内。
+		B) 在最大间隔以内增加样本，不会对最大间隔造成影响。
+		C) 同样有线性SVM回归和非线性SVM回归两种形式。在Scikit-Learn中，将SVC变成SVR即可。注意，当使用线性SVM回归时，依旧选择
+		   LinearSVR。
+	G. SVM用于离群值检测，参考Scikit-Learn文档。
+
