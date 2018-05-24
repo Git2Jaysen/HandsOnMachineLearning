@@ -20,3 +20,23 @@
 		E) Bagging通常会得到更好的模型，但是如果有时间和计算资源的话，可以使用交叉验证来确定哪一个更好。
 		F) Out-of-Bag(oob)：在对训练集进行采样时，只有一部分训练数据被用于训练，其他的数据对当前某个预测器来说是不可见的，可以用来做验证。
 		   在Scikit-Learn的BaggingClassifier中设定oob_score=True即可。
+		G) Random Subspaces: 对特征进行采样，而不是对样本进行采样，对输入维数很高时非常有用。
+		H) Random Patches：同时对样本和特征进行采样。
+		I) Random Forests：利用bagging方法对决策树进行集成。在Scikit-Learn中，有专门的类RandomForestClassifier和RandomForestRegr
+		   essor。
+		J) 在运用决策树时，重要的特征会更加接近根结点，不重要的特征会更接近叶结点，所以在随机森林中，可以根据特征的平均深度来估计特征的重要
+		   性。在Scikit-Learn中，feature_importances_表示了这种重要性。通过使用随机森林，可以对特征重要性有一个清晰的认识，方便做特征
+		   选择。
+	F. Boosting
+		A) Boosting的思想是训练一系列的预测器，并且在训练当前预测器时矫正前一个预测器的错误。常用的Boosting方法有两种：Adaptive Boost
+		   ing(又称AdaBoost)和Gradient Boost。
+		B) AdaBoost
+			a. 思想是尽量去拟合前一个预测器没有拟合的实例。每个实例都有一个权重，未得到正确预测的实例权重会增加，使得被下一个预测器
+			   选中的可能性增加，这个过程有点类似于梯度下降，只不过不是优化参数。
+			b. 当所有预测器训练完成后，预测的过程和bagging或者pasting非常类似，不过每一个预测器的结果都有一个权重。
+			c. 缺陷：无法并行。
+		C) Gradient Boost
+			a. 与AdaBoost调整实例权重不同，Gradient Boost尝试拟合前一个预测器残余的错误(误差，error，真实值与预测值之差)。
+			b. 
+			
+			
