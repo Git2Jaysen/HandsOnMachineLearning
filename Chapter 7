@@ -11,8 +11,12 @@
 			b. soft majority voting：对预测的概率或分数进行某种策略进行融合(加和求平均、加权等)，然后得出预测结果。通常比hard要好。
 		C) 对应Scikit-Learning中VotingClassfier。参数voting='hard'和voting='soft'选择不同的形式。
 	E. Bagging and Pasting
-		A) 通过利用同一预测器在不同的训练集子集上训练，并将这些预测器的结果进行融合，来获得最终的集成预测结果。
+		A) 通过利用同一预测器在不同的训练集子集上训练，并将这些预测器的结果进行融合(对于分类，可以是hard voting和soft voting;对于回归，
+		   可以是取平均)，来获得最终的集成预测结果。
 		B) 训练子集采样有两种方法：放回和不放回。如果放回，则称为bagging;如果不放回，则称为pasting。
 		C) 因为是在训练集子集上训练，所以最终每个预测器都有很大的偏差(bias)，但是通过集成，最终得到的模型与在全部训练集上训练的单个预测器
 		   相比，具有相近的偏差(bias)，但是却有更小的方差(variance)。
 		D) Bagging and Pasting适应性很好，因为训练和预测可以并行进行，提高了效率。
+		E) Bagging通常会得到更好的模型，但是如果有时间和计算资源的话，可以使用交叉验证来确定哪一个更好。
+		F) Out-of-Bag(oob)：在对训练集进行采样时，只有一部分训练数据被用于训练，其他的数据对当前某个预测器来说是不可见的，可以用来做验证。
+		   在Scikit-Learn的BaggingClassifier中设定oob_score=True即可。
