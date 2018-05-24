@@ -1,0 +1,12 @@
+
+1. 集成学习(Ensemble Learning)
+	A. 群体智慧(wise of crowd)：聚集多个预测器(predictor)的预测结果做出的预测往往比单个预测器的预测结果要好很多。
+	B. 在机器学习项目中，集成学习经常被用到。如果已经训练好了一些不错的预测器，通过集成学习能够获得结果的提升。
+	C. 集成学习在预测器之间尽可能相互独立时效果最好，一种办法是使用不同的算法来训练以产生不同类型的错误。如果预测器都产生相同类型的错误，那么在
+	   预测错误时，反而会加重错误，造成准确率的下降。
+	C. voting
+		A) 如果有一些预测效果较好的预测器，想要提升预测效果，最简单的方法就是使用多数投票(majority voting)的方法。
+		B) 多数投票分为hard和soft两种。
+			a. hard majority voting：直接根据最终的预测结果进行多数投票。
+			b. soft majority voting：对预测的概率或分数进行某种策略进行融合(加和求平均、加权等)，然后得出预测结果。通常比hard要好。
+		C) 对应Scikit-Learning中VotingClassfier。参数voting='hard'和voting='soft'选择不同的形式。
