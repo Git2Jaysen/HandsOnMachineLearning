@@ -37,6 +37,18 @@
 			c. 缺陷：无法并行。
 		C) Gradient Boost
 			a. 与AdaBoost调整实例权重不同，Gradient Boost尝试拟合前一个预测器残余的错误(误差，error，真实值与预测值之差)。
-			b. 
-			
+			b. 在Scikit-Learn中，由GradientBoostingRegressor和GradientBoostingClassifier实现，分别对应回归和分类任务。
+	G. Stacking
+		A) 不同于Voting、Bagging和Boosting通过聚集各个预测器的结果，Stacking直接将各个预测器的结果作为训练特征，重新训练一个预测器
+		   来预测结果。这个基于各预测器预测结果的最终预测器叫做Blender或者meta learner。
+		B) 训练单个blender的步骤
+			a. 将训练集分成两部分T1和T2。
+			b. 类似于Voting和Bagging，利用T1训练一系列的预测器。
+			c. 利用训练好的一系列预测器对T2进行预测。
+			d. 根据各预测器在T2上的预测结果构建新的训练集T3，目标A3(target，标注)为T2的目标。
+			e. 根据训练集T3和目标A3训练一个blender。
+		C) 训练层次blender的步骤
+			a. 可将训练单个blender看成单层，如果要训练2层，则需将训练集划分成3份，训练原理同训练单个blender的原理。多层的情况以
+			   此类推。
+		
 			
