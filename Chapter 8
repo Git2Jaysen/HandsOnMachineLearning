@@ -20,3 +20,11 @@
 		C) 主成分(principal components)：为了将数据降到d维，需要确定d维超平面。这个超平面由d个主成分确定，每个主成分为单位向量，它们之
 		   间相互正交(一组d个正交单位向量，支撑着d维空间)，可对训练数据进行奇异值分解(singular value decomposition, SVD)得出。
 		D) PCA假设数据集已经中心化了，所以在自己实现时先要进行中心化处理。
+		E) 投影：设训练集为X，主成分向量组成的矩阵为Wd，则投影即是计算X_proj = X * Wd。重构：X = X_proj * Wd.T。重构后的数据与原来的
+		   数据有差别，因为投影时丢失了一些信息，但是重要信息没丢。这个过程相当于对数据进行压缩，保留有用信息。
+		F) explained variance ratio：表达了沿着每个主成分的轴的数据散布情况的分数，和为1。分数越大表示携带信息越多，反之越少。
+		G) 除了进行数据可视化设置维度为2或3之外，其他情况下应该指定explained variance ratio，而不是直接指定要降到的维度，这样保证信息
+		   不会过于丢失(如设置explained variance ratio为0.95)。另一个选择是画出随维度(最终要降到的维度)的变化，explained variance
+		   ratio的变化趋势，然后选择没有显著增长的一个点。
+		H) 增量PCA(Incremental PCA，IPCA)：PCA需要所有训练集都在内存中，不适应超大数据集。IPCA类似与MGD，将训练集划分成多个
+		   mini-batch，然后一个batch一个batch进行奇异值分解。这保证了算法的适应性，不仅不需要大内存，同时也可进行线上训练。
